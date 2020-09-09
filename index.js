@@ -207,11 +207,21 @@ and should return the average number of words per item in the array.
 
 For example, getAverageWordLength(originalFlavors) should return a number between 0 and 3. */
 
-function getAverageWordLength(/*code here*/) {
+function getAverageWordLength(array) {
 
     /*code here*/
+    let wordCount = 0;
+    for (i=0; i<array.length; i++) {
 
+        // split(' ') splits the string into an array using spaces as the indicator
+        // length is used to get the length of the array / how many words there are in array[i] 
+        wordCount = wordCount + array[i].split(' ').length;
+        
+    }
+    return Math.round(wordCount/array.length);
 }
+
+console.log(getAverageWordLength(originalFlavors))
 
 
 /* STRETCH 2: Baskin Robins now offers new flavors, seasonal flavors, and even regional flavors. Write a function that will randomly select a total of 31 flavors from originalFlavors, currentFlavors, seasonalFlavors, and regionalFlavors.
