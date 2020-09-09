@@ -211,20 +211,21 @@ function getAverageWordLength(array) {
 
     /*code here*/
     let wordCount = 0;
-    for (i=0; i<array.length; i++) {
+    for (i = 0; i < array.length; i++) {
 
         // split(' ') splits the string into an array using spaces as the indicator
         // length is used to get the length of the array / how many words there are in array[i] 
         wordCount = wordCount + array[i].split(' ').length;
-        
+
     }
-    return Math.round(wordCount/array.length);
+    return Math.round(wordCount / array.length);
 }
 
 console.log(getAverageWordLength(originalFlavors))
 
 
-/* STRETCH 2: Baskin Robins now offers new flavors, seasonal flavors, and even regional flavors. Write a function that will randomly select a total of 31 flavors from originalFlavors, currentFlavors, seasonalFlavors, and regionalFlavors.
+/* STRETCH 2: Baskin Robins now offers new flavors, seasonal flavors, and even regional flavors. Write a function that will randomly select a 
+total of 31 flavors from originalFlavors, currentFlavors, seasonalFlavors, and regionalFlavors.
 
 Your function should accept 4 different arrays,
 
@@ -305,8 +306,31 @@ var regionalFlavors = ["Pink Bubblegum",
     "Chocolate Chocolate Chip Cheesecake",
     "Caramel 'n' Cookies"]
 
-function getRandomFlavors(/*code here*/) {
+function getRandomFlavors(arrayOne, arrayTwo, arrayThree, arrayFour) {
 
     /*code here*/
+    let randomFlavorArray = [];
+    let breakcount = 0;
 
+    let masterArray = [...arrayOne, ...arrayTwo, ...arrayThree, ...arrayFour];
+
+    while (randomFlavorArray.length < 31) {
+        let selector = Math.floor(Math.random() * masterArray.length)
+
+        if (randomFlavorArray.includes(masterArray[selector]) !== true) {
+
+            randomFlavorArray.push(masterArray[selector]);
+        }
+        else {
+            breakcount++
+            if (breakcount >= masterArray.length * 10) {
+                break;
+            }
+        }
+    }
+    return randomFlavorArray;
 }
+
+console.log(getRandomFlavors(originalFlavors, newFlavors, seasonalFlavors, regionalFlavors));
+
+console.log(getRandomFlavors(originalFlavors, newFlavors, seasonalFlavors, regionalFlavors).length);
