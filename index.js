@@ -114,7 +114,8 @@ function getFlavorByIndex(array, index){
 
 console.log(getFlavorByIndex(originalFlavors, 2));
 
-/* Task 5: As corporate wants to add more and more flavors to their lineup, they've realized that they need to remove flavors based on flavor name, as opposed to just arbitrarily removing the first or last flavor. Your task is to get an index by flavor name, and remove that flavor from the array. 
+/* Task 5: As corporate wants to add more and more flavors to their lineup, they've realized that they need to remove flavors based on flavor name, 
+as opposed to just arbitrarily removing the first or last flavor. Your task is to get an index by flavor name, and remove that flavor from the array. 
 
 Your function should accept: 
 
@@ -127,12 +128,17 @@ Hint: You can use .splice() for this
 
 */
 
-function removeFlavorByName(/*code here*/){
+function removeFlavorByName(array, flavorName){
 
     /*code here*/
+    if (array.includes(flavorName)){
+        array.splice(array.indexOf(flavorName), 1);
+    }
 
+    return array;
 }
 
+console.log(removeFlavorByName(originalFlavors, "Vanilla"))
 
 /* Task 6: With all of these changes going on, we don't want to lose track of the actual, original 31 flavors. Write a function called copy that makes a copy of the array. 
 
